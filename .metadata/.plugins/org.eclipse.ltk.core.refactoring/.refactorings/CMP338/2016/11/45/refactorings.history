@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;Tress&apos; to &apos;tree.refbased&apos;&#x0D;&#x0A;- Original project: &apos;CMP338&apos;&#x0D;&#x0A;- Original element: &apos;CMP338/src/Tress&apos;&#x0D;&#x0A;- Renamed element: &apos;CMP338/src/tree.refbased&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;Tress&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;Tress" name="tree.refbased" qualified="false" references="true" stamp="1478052154863" textual="false" version="1.0"/>
+</session>

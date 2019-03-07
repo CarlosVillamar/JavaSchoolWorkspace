@@ -1,0 +1,35 @@
+//----------------------------------------------------------------------------//
+
+import java.io.*;
+import java.net.*;
+
+//----------------------------------------------------------------------------//
+
+
+public class GUIClient extends GUIChat
+{
+
+   //-------------------------------------------------------------------------//
+
+   public GUIClient()
+   {
+      super();
+   }
+
+  //-------------------------------------------------------------------------//
+
+  public void setupConnection()
+  {
+      try
+      {
+         Socket socket = new Socket("localhost", 8080);
+
+         input  = new DataInputStream(socket.getInputStream());
+         output = new DataOutputStream(socket.getOutputStream());
+      }
+      catch(IOException x){};
+  }
+
+  //-------------------------------------------------------------------------//
+
+}

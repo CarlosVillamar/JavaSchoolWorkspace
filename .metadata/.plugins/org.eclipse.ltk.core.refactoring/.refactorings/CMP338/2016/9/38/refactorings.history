@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;ADT&apos; to &apos;ADT_lists&apos;&#x0D;&#x0A;- Original project: &apos;CMP338&apos;&#x0D;&#x0A;- Original element: &apos;CMP338/src/ADT&apos;&#x0D;&#x0A;- Renamed element: &apos;CMP338/src/ADT_lists&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;ADT&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;ADT" name="ADT_lists" qualified="false" references="true" stamp="1473813944455" textual="false" version="1.0"/>
+</session>

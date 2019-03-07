@@ -1,0 +1,32 @@
+package art;
+
+import java.awt.Graphics;
+
+public class Rect extends shape {
+	/*int x;
+	int y; //axis align refers to x and y*/
+	
+	int w;
+	int h;
+	
+	public Rect(int x, int y, int w, int h)
+	{
+		super(x,y);
+		
+		//Remember w and h cannot be negative values
+		this.w = w;
+		this.h = h;
+	}
+	
+	public void draw(Graphics win)
+	{
+		win.drawRect(x, y, w, h);
+		
+	}
+	
+	public boolean contains(int mx,int my)
+	{
+		int z = w*h;
+		return Math.pow((x - mx), 2)+ Math.pow((y - my), 2) <= z;
+	}
+}

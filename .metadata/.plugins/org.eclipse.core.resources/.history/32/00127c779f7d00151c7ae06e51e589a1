@@ -1,0 +1,24 @@
+package art;
+
+import java.awt.Graphics;
+
+public class FakeWindow extends Rect
+{
+	Rect titlebar;
+	Rect resizer;
+	
+	public FakeWindow(int x, int y, int w, int h) // TODO Auto-generated constructor stub
+	{
+		super(x, y, w, h);
+		
+		titlebar = new Rect(x, y, w, 20);
+		
+		resizer = new Rect(x+w-20,y+h-20,20,20);
+	}
+
+	public void draw(Graphics win)
+	{
+		super.draw(win);
+	}
+	
+}
