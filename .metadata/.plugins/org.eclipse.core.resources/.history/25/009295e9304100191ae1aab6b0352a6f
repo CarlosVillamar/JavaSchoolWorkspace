@@ -1,0 +1,86 @@
+package gooogleCodeCollection;
+
+import java.awt.List;
+import java.io.BufferedInputStream;
+import java.io.Console;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class TroubleSort {
+
+	static ArrayList<Integer> numlist = new ArrayList<>();
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		try {
+			System.out.println("Give me a set of numbers one by one");
+			Scanner scanner = new Scanner(System.in);
+			Boolean checkList = true;
+//			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+			while(checkList) {
+				
+//				int num = Integer.parseInt(reader.readLine());
+				if(scanner.hasNextInt()) {
+					int num2 = scanner.nextInt();
+					numlist.add(num2);
+					troubleSort(numlist);
+				}else if(scanner.equals("")||scanner.equals("done")) {
+					checkList =false;
+//					System.exit(0);
+				}
+				
+				
+//				if(scanner.equals("done")) {
+//					checkList = false;
+//					troubleSort(numlist);
+//				}
+			
+			}			
+			
+			} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static  void troubleSort(ArrayList<Integer> list){
+		System.out.println("outtttt");
+		Boolean done = false;
+		int [] numarr = new int[list.size()];
+		while(!done){
+			int temp = 0;
+			for(int i = 0; i<list.size(); i++){
+				if(list.get(i)>list.get(i+2)){
+					done = false;
+					temp = list.get(i);
+					list.set(i,list.get(i+2));
+					list.set(i+2,temp);
+					
+					if(list.get(i)>list.get(i+1)){
+						done = false;
+						temp = list.get(i);
+						list.set(i, list.get(i+2));
+						list.set(i+1, temp);
+					}
+					
+				}else if (list.get(i)>list.get(i+1)){
+					temp = list.get(i);
+					list.set(i, list.get(i+2));
+					list.set(i+1, temp);
+					done = true;
+				}
+			}
+		}
+		System.out.println(list);
+		
+	}
+
+}

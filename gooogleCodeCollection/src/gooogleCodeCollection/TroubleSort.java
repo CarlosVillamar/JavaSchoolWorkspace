@@ -1,43 +1,58 @@
 package gooogleCodeCollection;
 
 import java.awt.List;
+import java.io.BufferedInputStream;
+import java.io.Console;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class TroubleSort {
 
 	static ArrayList<Integer> numlist = new ArrayList<>();
 	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		try {
 			System.out.println("Give me a set of numbers one by one");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			Scanner scanner = new Scanner(System.in);
+			Boolean checkList = true;
+//			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+			while(checkList) {
+				
+//				int num = Integer.parseInt(reader.readLine());
+				if(scanner.hasNextInt()) {
+					int num2 = scanner.nextInt();
+					numlist.add(num2);
+				}else if(scanner.hasNext()) {
+					//not triggering
+					troubleSort(numlist);
+					checkList =false;
+//					System.exit(0);
+				}
+				
+			}			
 			
-			int num = Integer.parseInt(reader.readLine());
-			numlist.add(num);
-			
-			troubleSort(numlist);
-			
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
+			} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 	
 	public static  void troubleSort(ArrayList<Integer> list){
+		System.out.println("outtttt");
 		Boolean done = false;
 		int [] numarr = new int[list.size()];
 		while(!done){
 			int temp = 0;
-			for(int i = 0; i<numarr.length; i++){
+			for(int i = 0; i<list.size(); i++){
 				if(list.get(i)>list.get(i+2)){
 					done = false;
 					temp = list.get(i);
@@ -59,7 +74,7 @@ public class TroubleSort {
 				}
 			}
 		}
-		System.out.println(numarr);
+		System.out.println(list);
 		
 	}
 
