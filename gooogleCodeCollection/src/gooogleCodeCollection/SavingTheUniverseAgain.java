@@ -24,6 +24,7 @@ public class SavingTheUniverseAgain {
 	  		System.out.println(result);
 	  		
 	  	}
+	  	scanner.close();
 	   System.exit(0);
   }
   private static long BeamStrength(char[] hackSeq){
@@ -34,15 +35,19 @@ public class SavingTheUniverseAgain {
 	  for(int i = 0; i< hackSeq.length; i++) {
 		  if(hackSeq[i]=='S') {
 			  damage = damage + strength;
+			  System.out.println("Current Beam Damage " + damage);
 		  }else if(hackSeq[i]=='C') {
 			  strength = strength*2;
+			  System.out.println("Current Beam Strength " + strength );
 		  }
 	  }
+	  System.out.println("is this it?");
 	  return damage;
 	  
   }
   
   private static long hackVerififaction(char hackCode, char [] seq) {
+	  //Check how many times our sequence returns a charge or shoot operations
 	int codeCount =0;
 	for(int i = 0; i < seq.length;i++) {
 		if (hackCode==seq[i]) {
@@ -59,31 +64,41 @@ public class SavingTheUniverseAgain {
 	  if(hackLength< hackVerififaction('S', seq)) {
 		  return "Impossible";
 	  }else {
+		  
 		  if(hackVerififaction('C', seq)==seq.length||hackVerififaction('S', seq)==seq.length) {
-			  return String.valueOf(hackCount);
+			  System.out.print("You cannot just charge the beam or shoot it ");
+			  return "0";
 		  }else {
-			  hackCount = hackAttack(hackLength, seq);
+			  
+			  if(hackLength >=BeamStrength(seq)) {
+				  System.out.print("Denied");
+				  return "0";
+				  
+			  }else  hackCount = hackAttack(hackLength, seq,0);
 		  }
 	  }
 	return String.valueOf(hackCount);
   }
 
   
-  private static long hackAttack(long numHack, char[] seq) {
-	   long hack =0;
+  private static long hackAttack(long numberOfHacks, char[] seq, long hack) {
+//	   long hack =0;
 //	  for(int i =0; i <seq.length; i++) {
-		  for(int i = seq.length-1; i >0; i--) {
-		  int nextInSequence = i--;
+		  for(int shotAttempt = seq.length-1; shotAttempt >0; shotAttempt--) {
+		  int chargeCheck = shotAttempt--;
 		  
-		  if(seq[i]=='S'& seq[nextInSequence]=='C') {
+		  if(seq[shotAttempt]=='S'& seq[chargeCheck]=='C') {
 			  hack++;
-			  seq[i]='C';
-			  seq[nextInSequence] ='S';
+			  seq[shotAttempt]='C';
+			  seq[chargeCheck] ='S';
+			  System.out.println("Swap occured");
 			  
-			  if(numHack >= BeamStrength(seq)) {
+			  if(numberOfHacks >= BeamStrength(seq)) {
+				  System.out.println("Number of hacks is greater than the beam strength");
 				  return hack;
 			  }else {
-				  return hackAttack(numHack, seq);
+				  System.out.println("You are cleared to engage!!!");
+				  return hackAttack(numberOfHacks, seq,hack);
 			  }
 		  }
 	  }
