@@ -1,0 +1,23 @@
+package gooogleCodeCollection;
+
+import java.util.Scanner;
+
+public class SavingTheUniverseAgain {
+
+  public static void main(String args[]) {
+	  	Scanner scanner = new Scanner(System.in);
+	  	System.out.println("Enter the number of engagements:  ");
+	  	int numOfEngagements = scanner.nextInt();
+	  	
+	  	//loop through the number of engagements
+	  	for(int i =1; i<=numOfEngagements;i++) {
+	  		System.out.println("Enter the haccking sequence you would like to try: ");
+	  		long hackSeqLength = scanner.nextLong();
+	  		char[] programSeq = scanner.next().toCharArray();
+	  	}
+	   System.exit(0);
+	  	
+	  	
+  }
+	
+}
