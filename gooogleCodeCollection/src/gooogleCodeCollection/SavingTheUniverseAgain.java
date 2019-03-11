@@ -3,107 +3,124 @@ package gooogleCodeCollection;
 import java.util.Scanner;
 
 public class SavingTheUniverseAgain {
-
-  public static void main(String args[]) {
-	  	Scanner scanner = new Scanner(System.in);
-	  	System.out.println("Enter the number of engagements:  ");
-	  	int numOfEngagements = scanner.nextInt();
-	  	
-	  	//loop through the number of engagements
-	  	for(int i =1; i<=numOfEngagements;i++) {
-	  		System.out.print("Enter the number hacks we have to attempt: ");
-	  		long numberOfHacks = scanner.nextLong();
-	  	
-	  		System.out.println("Enter the haccking sequence you would like to try: ");
-	  		char[] hackSeq = scanner.next().toCharArray();
-	  		
-	  		//send a call to method to hack the robot
-	  		String result = HackAttempt(numberOfHacks, hackSeq);
-	  		
-	  		//print out results
-	  		System.out.println(result);
-	  		
-	  	}
-	  	scanner.close();
-	   System.exit(0);
-  }
-  private static long BeamStrength(char[] hackSeq){
 	
-	  long damage = 0;
-	  long strength = 1;
-	  
-	  for(int i = 0; i< hackSeq.length; i++) {
-		  if(hackSeq[i]=='S') {
-			  damage = damage + strength;
-			  System.out.println("Current Beam Damage " + damage);
-		  }else if(hackSeq[i]=='C') {
-			  strength = strength*2;
-			  System.out.println("Current Beam Strength " + strength );
-		  }
-	  }
-	  System.out.println("is this it?");
-	  return damage;
-	  
-  }
-  
-  private static long hackVerififaction(char hackCode, char [] seq) {
-	  //Check how many times our sequence returns a charge or shoot operations
-	int codeCount =0;
-	for(int i = 0; i < seq.length;i++) {
-		if (hackCode==seq[i]) {
-			codeCount++;
+	/***
+	 * In order to hack the robot
+	 * % we need to know how many times we will attempt to hack it
+	 * % how strong is our shield?
+	 * % Analyze the robots sequence
+	 */
+
+	public static void main(String args[]) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the number of times we will attempt to hack the robot:  ");
+		int numOfEngagements = scanner.nextInt();
+
+		// loop through the number of engagements
+		for (int i = 1; i <= numOfEngagements; i++) {
+			System.out.print("How much damage can our sheild sustain? ");
+			long shieldCapacity = scanner.nextLong();
+
+			System.out.println("Enter the hacking sequence we need to hack to reduce the damage?  \n Remember C for charge and S for shoot");
+			char[] hackSeq = scanner.next().toCharArray();
+
+			// send a call to a method to hack the robot
+			String result = HackAttempt(shieldCapacity, hackSeq);
+
+			// print out results
+			System.out.println(i + " engagment(s) will require  " + result  + " hacks");
+
 		}
+		scanner.close();
+		System.exit(0);
 	}
 
-	  return codeCount;
-  }
-  
-  public static String HackAttempt(long hackLength, char[] seq) {
-	  long hackCount = 0;
-	  
-	  if(hackLength< hackVerififaction('S', seq)) {
-		  return "Impossible";
-	  }else {
-		  
-		  if(hackVerififaction('C', seq)==seq.length||hackVerififaction('S', seq)==seq.length) {
-			  System.out.print("You cannot just charge the beam or shoot it ");
-			  return "0";
-		  }else {
-			  
-			  if(hackLength >=BeamStrength(seq)) {
-				  System.out.print("Denied");
-				  return "0";
-				  
-			  }else  hackCount = hackAttack(hackLength, seq,0);
-		  }
-	  }
-	return String.valueOf(hackCount);
-  }
+	public static String HackAttempt(long shieldDamage, char[] seq) {
+		//Lets attempt to hack the robot's beam based on certain criteria
+		long hackCount = 0;
 
-  
-  private static long hackAttack(long numberOfHacks, char[] seq, long hack) {
-//	   long hack =0;
-//	  for(int i =0; i <seq.length; i++) {
-		  for(int shotAttempt = seq.length-1; shotAttempt >0; shotAttempt--) {
-		  int chargeCheck = shotAttempt--;
-		  
-		  if(seq[shotAttempt]=='S'& seq[chargeCheck]=='C') {
-			  hack++;
-			  seq[shotAttempt]='C';
-			  seq[chargeCheck] ='S';
-			  System.out.println("Swap occured");
-			  
-			  if(numberOfHacks >= BeamStrength(seq)) {
-				  System.out.println("Number of hacks is greater than the beam strength");
-				  return hack;
-			  }else {
-				  System.out.println("You are cleared to engage!!!");
-				  return hackAttack(numberOfHacks, seq,hack);
-			  }
-		  }
-	  }
-	  
-	  return hack;
-  }
-	
+		if (shieldDamage < hackVerififaction('S', seq)) {
+			//we can't  hack if the sequence is only set to shoot and our shield capacity is less that the amount of times the sequence is set to shoot
+			return "Impossible";
+		} else {
+
+			if (hackVerififaction('C', seq) == seq.length || hackVerififaction('S', seq) == seq.length) {
+				//we can't hack the beam if it is only a series of charges or shots
+				return "You cannot just charge the beam or shoot it ";
+			} else {
+				//for every other case
+
+				if (BeamStrength(seq)<=shieldDamage) {
+					return "**No need to hack it we can take the hit**";
+
+				} else {
+					//we have to try to hack the sequence the damage is too strong
+					hackCount = hackAttack(shieldDamage, seq, 0);
+				}
+			}
+		}
+		return String.valueOf(hackCount);
+	}
+
+	private static long hackVerififaction(char hackCode, char[] seq) {
+		// Check how many times our sequence returns a charge or shoot
+		// operations depending on what gets passed in
+		int codeCount = 0;
+		for (int i = 0; i < seq.length; i++) {
+			if (hackCode == seq[i]) {
+				codeCount++;
+			}
+		}
+
+		return codeCount;
+	}
+
+	private static long hackAttack(long shieldDamage, char[] seq, long hack) {
+		//Lets hack the robot and make sure we don't get caught |  lets see what we can change
+		 for(int hackIndex=0; hackIndex <seq.length; hackIndex++) {
+			 
+			int shotCheck = hackIndex+1;//check the index ahead for a shoot command
+
+
+			if (seq[hackIndex] == 'C' & seq[shotCheck] == 'S') {
+				//we can swap operations when a shoot command follows up a charge command
+				hack++;
+				seq[hackIndex] = 'S';
+				seq[shotCheck] = 'C';
+				System.out.println("Swap occured ");
+
+				if (BeamStrength(seq)<=shieldDamage) {
+					//The beam is no longer strong enough to place us in danger
+					System.out.println("Prepare to engage!!!");
+					return hack;
+				} else {
+					//the beam is too strong, we have to hack the sequence again
+					System.out.println("The beam is still too strong");
+					return hackAttack(shieldDamage, seq, hack);
+				}
+			}
+		}
+
+		return hack;
+	}
+
+	private static long BeamStrength(char[] hackSeq) {
+		//What is the current damage of robots beam? lets calculate it
+
+		long damage = 0;
+		long strength = 1;
+
+		for (int i = 0; i < hackSeq.length; i++) {
+			if (hackSeq[i] == 'S') {
+				damage = damage + strength;
+				System.out.println("Current Beam Damage " + damage);
+			}else if (hackSeq[i] == 'C') {
+				strength = strength * 2;
+				System.out.println("Current Beam Strength " + strength);
+			}
+		}
+		return damage;
+
+	}
+
 }
