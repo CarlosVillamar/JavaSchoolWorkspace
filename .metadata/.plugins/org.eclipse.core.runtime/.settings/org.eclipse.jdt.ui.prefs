@@ -19,7 +19,7 @@ org.eclipse.jdt.ui.text.code_templates_migrated=true
 org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.templates_migrated=true
-org.eclipse.jface.textfont=1|Sans|26.0|3|COCOA|1|;
+org.eclipse.jface.textfont=1|Sans|14.0|3|COCOA|1|;
 proposalOrderMigrated=true
 smart_opening_brace=true
 smart_semicolon=true

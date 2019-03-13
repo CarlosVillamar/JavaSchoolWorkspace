@@ -123,6 +123,7 @@ public class WaffleChoppers {
 				// This means we can make a vertical cut so all pieces to its left are correct.
 				// Just reset our counters to 0.
 				if (canCut) {
+					System.out.println("We can cut again");
 					Arrays.fill(pCur, 0);
 				}
 			}
