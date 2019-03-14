@@ -90,7 +90,7 @@ public class WaffleChoppers {
 			ArrayList<Integer> hCuts = new ArrayList<Integer>();
 
 			// How many chips we need after cuts all in one direction.
-			int target = numChips/(h+1);
+			int chipTargetPerPiece = numChips/(h+1);
 			System.out.println(" Our target number of chips after horizontal cuts is " );
 			int cut = 0;
 			
@@ -101,21 +101,21 @@ public class WaffleChoppers {
 					cut += waffleGrid[i][j];//remember by now our waffle cells have values of 1 or 0
 
 				// Time to cut.
-				if (cut == target) {
+				if (cut == chipTargetPerPiece) {
 					hCuts.add(i);
 					cut = 0;
 				}
 				
 				// If this triggers, it means we went from too few to too many, so it's impossible.
-				else if (cut > target)
+				else if (cut > chipTargetPerPiece)
 					return false;
 			}
 
 			// New target in a single piece.
-			int cTarget = numChips/((h+1)*(v+1));
-			System.out.println("Our new chip target per piece after the vertical cuts will be "+ cTarget);
+			int verticalCutTarget = numChips/((h+1)*(v+1));
+			System.out.println("Our new chip target per piece after the vertical cuts will be "+ verticalCutTarget);
 
-			int[] pCur = new int[h+1];
+			int[] chipsPerCut = new int[h+1];
 
 			// Go column by column to see if we can cut.
 			for (int col_index=0; col_index<c; col_index++) {
@@ -125,7 +125,7 @@ public class WaffleChoppers {
 					int start = i == 0 ? 0 : hCuts.get(i-1)+1;
 					int end = hCuts.get(i);
 					for (int j=start; j<=end; j++) {
-						pCur[i] += waffleGrid[j][col_index];
+						chipsPerCut[i] += waffleGrid[j][col_index];
 					}
 				}
 
@@ -133,15 +133,15 @@ public class WaffleChoppers {
 				// If any piece has gone over, it's impossible.
 				boolean canCut = true;
 				for (int i=0; i<hCuts.size(); i++) {
-					if (pCur[i] != cTarget) canCut = false;
-					if (pCur[i] > cTarget) return false;
+					if (chipsPerCut[i] != verticalCutTarget) canCut = false;
+					if (chipsPerCut[i] > verticalCutTarget) return false;
 				}
 
 				// This means we can make a vertical cut so all pieces to its left are correct.
 				// Just reset our counters to 0.
 				if (canCut) {
 //					System.out.println("We can cut again");
-					Arrays.fill(pCur, 0);
+					Arrays.fill(chipsPerCut, 0);
 				}
 			}
 
