@@ -21,14 +21,14 @@ public class SavingTheUniverseAgain {
 			System.out.print("How much damage can our sheild sustain? ");
 			long shieldCapacity = scanner.nextLong();
 
-			System.out.println("Enter the hacking sequence we need to hack to reduce the damage?  \n Remember C for charge and S for shoot \n no lower cases");
+			System.out.println("Enter the hacking sequence we need to hack to reduce the damage?  \n Remember C for charge and S for shoot \n no lower case C's or S' ");
 			char[] hackSeq = scanner.next().toCharArray();
 
 			// send a call to a method to hack the robot
 			String result = HackAttempt(shieldCapacity, hackSeq);
 
 			// print out results
-			System.out.println("This engagement will require  " + result  + " hacks  \n We have " + i + "engageents left");
+			System.out.println("This engagement will require  " + result  + " hacks  \n We have " + i + " engageents left");
 
 		}
 		scanner.close();

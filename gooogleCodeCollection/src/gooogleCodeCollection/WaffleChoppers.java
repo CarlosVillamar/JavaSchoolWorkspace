@@ -3,13 +3,20 @@ package gooogleCodeCollection;
 import java.util.*;
 
 public class WaffleChoppers {
+	/**
+	 * For this problem we would like to able to cut the waffles we create into individual pieces and ensure
+	 * we have an equal amount of chocolate chips for each piece, the purpose of this application is to determine
+	 *~~how many rows and columns does each waffle contain?
+	 *~~how many horizontal and vertical cuts we will make?
+	 *~~what are the contents of each waffle row?
+	 */
 
 		public static int r;//waffle row
 		public static int c;//waffle column
 		public static int h;//horizontal cuts
 		public static int v;//vertical cuts
 
-		public static int numChips;
+		public static int numChips;//number of chocolate chips
 
 		public static int[][] waffleGrid;//this is the two dimensional array our grid consists of 
 
@@ -33,7 +40,7 @@ public class WaffleChoppers {
 				System.out.println("Enter the number of vertical cuts you would like to make: ");
 				v = stdin.nextInt();
 
-				// Read in the grid.
+				// Here we essentially decorate our waffles
 				numChips = 0;
 				System.out.println("Remember . will denote a chip \n");
 				for (int i=0; i<r; i++) {
@@ -62,12 +69,20 @@ public class WaffleChoppers {
 		}
 
 		public static boolean solve() {
-
-			// Here is a number of statements we can check via basic divisiblity.
+			/**
+			 * The purpose  of  this boolean function is to figure out whether  or not we can cut our waffle and
+			 * still meet our chip criteria
+			 */
+			 
+			//The statements below we will determine if we have too many cuts or too little cuts compared to the number of chips
+			//we determine this by trying to find out if the numbers are pairs of even or odd
+			//this way we filter out a waffle with data that is already destined to fail
 			if (numChips%(h+1) != 0) return false;
 			if (numChips%(v+1) != 0) return false;
 			if (numChips%((h+1)*(v+1)) != 0) return false;
+			
 			if (numChips == 0) {
+				//no chips....so everything is even
 				System.out.println("There are no chips, so we  have no cuts to make");
 				return true;
 			}
@@ -76,6 +91,7 @@ public class WaffleChoppers {
 
 			// How many chips we need after cuts all in one direction.
 			int target = numChips/(h+1);
+			System.out.println(" Our target number of chips after horizontal cuts is " );
 			int cut = 0;
 			
 			// We just greedily cut as soon as we can for horizontal cuts.
@@ -97,6 +113,7 @@ public class WaffleChoppers {
 
 			// New target in a single piece.
 			int cTarget = numChips/((h+1)*(v+1));
+			System.out.println("Our new chip target per piece after the vertical cuts will be "+ cTarget);
 
 			int[] pCur = new int[h+1];
 
