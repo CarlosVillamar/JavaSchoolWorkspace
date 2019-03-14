@@ -7,9 +7,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
- * @author user
+ * @author Carlos Villamar http:github.com/carlosvillamar
  *
  */
 public class Metrocard {
@@ -26,19 +27,26 @@ public class Metrocard {
 	
 	private Date expirationDate, activeDate, unlimitedEndDate;
 	
-	private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+//	private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+	public Metrocard(String cardType) {
+		this.cardType = cardType;
+		cardID =  new UUID(10,2);
+		activeStatus = true;
+		activeDate = new Date(1);
+		setExpirationDate();
+	}
 	
 	public String  setCardType(String s) {
 		cardType = s;
 		return cardType;
 	}
 	
-	public  void setID() {
-//			cardID =  new UUID();
-		activeStatus = true;
-		activeDate = new Date();
-		setExpirationDate();
-	}
+//	public  void setID() {
+//		cardID =  new UUID(10,2);
+//		activeStatus = true;
+//		activeDate = new Date(1);
+//		setExpirationDate();
+//	}
 	
 	public  UUID getID() {
 		return cardID;
@@ -54,25 +62,6 @@ public class Metrocard {
 		return currentValue;
 	}
 	
-	public void getCardInfromation() {
-		//expirationDate 
-		//card type
-		if(!expired) {
-				if(cardType != "regular") {
-					//expirationDate
-					//active
-					//cardType
-					//id
-				}else {
-					//expiration date
-					//value
-					//id
-				}
-		}else {
-			//exipiration date
-		}
-
-		} 
 
 	
 	public double prePaidValues(int opt) {
@@ -98,24 +87,28 @@ public class Metrocard {
 		switch(opt) {
 		case 1: //single day
 			cardType = "Single day";
-			activeDate = new Date();
 			unlimited = true;
-			//set end date of tomorrow
+			activeDate = new Date(1);
+			long tomorrow = TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS);
+			setUnlimitedEndDate(tomorrow);
 		case 2://monthly
 			cardType = "Monthly unlimited";
 			unlimited = true;
-			activeDate = new Date();
-			//set end date of  30 days
+			activeDate = new Date(1);
+			long endOfTheMonth = TimeUnit.MILLISECONDS.convert(30, TimeUnit.DAYS);
+			setUnlimitedEndDate(endOfTheMonth);
 		case 3://weekly
 			cardType = " Weekly unlimited";
 			unlimited = true;
-			activeDate = new Date();
-			//set an end date of  date from active date
+			activeDate = new Date(1);
+			long endOfTheWeek= TimeUnit.MILLISECONDS.convert(7, TimeUnit.DAYS);
+			setUnlimitedEndDate(endOfTheWeek);
 		case 4://xbus pass	
 			cardType = " Express bus weekly pass";
 			unlimited = true;
-			activeDate = new Date();
-			//set an end date of  date from active date
+			activeDate = new Date(1);
+			long endOfTheWeek2= TimeUnit.MILLISECONDS.convert(7, TimeUnit.DAYS);
+			setUnlimitedEndDate(endOfTheWeek2);
 		}
 	}
 
@@ -124,12 +117,35 @@ public class Metrocard {
 	}
 	
 	public Date setExpirationDate() {
-		expirationDate = new Date();
+		long twoYearsFromToday = TimeUnit.MILLISECONDS.convert(730, TimeUnit.DAYS);
+		expirationDate = new Date(System.currentTimeMillis() + twoYearsFromToday);
 		return expirationDate;
+	}
+	
+	public Date setUnlimitedEndDate(long date) {
+		unlimitedEndDate = new Date(System.currentTimeMillis() + date);
+		return unlimitedEndDate;
 	}
 	
 	
 	
-	
-	
+	public void getCardInfromation() {
+		//expirationDate 
+		//card type
+		if(!expired) {
+			if(cardType != "regular") {
+				//expirationDate
+				//active
+				//cardType
+				//id
+			}else {
+				//expiration date
+				//value
+				//id
+			}
+		}else {
+			//exipiration date
+		}
+		
+	} 
 }
