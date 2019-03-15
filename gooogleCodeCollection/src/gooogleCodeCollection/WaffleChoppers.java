@@ -80,13 +80,14 @@ public class WaffleChoppers {
 			//The statements below we will determine if we have too many cuts or too little cuts compared to the number of chips
 			//we determine this by trying to find out if the numbers are pairs of even or odd
 			//this way we filter out a waffle with data that is already destined to fail
-			if (numChips%(h+1) != 0) return false;
-			if (numChips%(v+1) != 0) return false;
-			if (numChips%((h+1)*(v+1)) != 0) return false;
-			
+			if (numChips%(h+1) != 0 || numChips%(v+1) != 0 || numChips%((h+1)*(v+1)) != 0 ) {
+				System.out.println("Not enough chips to distrubute evenly") ;
+				return false;
+				}
+
 			if (numChips == 0) {
 				//every cell in the waffle has a chip....so everything is even
-				System.out.println("we have an even number of chips, so we have no cuts to make ");
+				System.out.println("we have an even number of chips, so all are cuts will have an equal distribution of chips");
 				return true;
 			}
 
@@ -96,58 +97,52 @@ public class WaffleChoppers {
 			int chips = numChips/(h+1);
 			System.out.println("The number of chips we have to work with " + chips );
 			int cut = 0;
-			
+			// New target in a single piece.
+
+
 			// We just greedily cut as soon as we can for horizontal cuts.
 			for (int i=0; i<r; i++) {
 
 				for (int j=0;j<c;j++)
 					cut += waffleGrid[i][j];//remember by now our waffle cells have values of 1 or 0
+				System.out.println("cuts we have to make for this row " + cut);
+			
 
 				// Time to cut.
 				if (cut == chips) {
 					horizontalCutsArray.add(i);
+					System.out.println("We have an equal number of chips and cuts to make in this row" );
 					cut = 0;
-				}
 				
-				// If this triggers, it means we went from too few to too many, so it's impossible.
-				else if (cut > chips)
+				}else if (cut > chips) {
+					// If this triggers, it means we went from too few to too many, so it's impossible.
+					System.out.println("this row contains too many cuts we have to make, there are not enough chips in this row to distrubute evenly ");
 					return false;
+				}
 			}
 
-			// New target in a single piece.
+			//we now need to establish a two dimensional array based on the rows cuts we have made  and the columns we have to now cut
+			int[] chipsPerHCut = new int[h+1];
+			for (int col_index=0; col_index<c; col_index++) {
+				for (int i=0; i<horizontalCutsArray.size()-1; i++) {
+					chipsPerHCut[i] += waffleGrid[i][col_index];
+				
+				}
+			}
+			
 			int verticalCutTarget = numChips/((h+1)*(v+1));
 			System.out.println("Our new chip target per piece after the vertical cuts will be "+ verticalCutTarget);
-
-			int[] chipsPerPiece = new int[h+1];
-
-			// Go column by column to see if we can cut.
-			for (int col_index=0; col_index<c; col_index++) {
-
-				// Across each slice we add the chocolate chips, just for this single column for each piece.
-				for (int i=0; i<horizontalCutsArray.size(); i++) {
-					int start = i == 0 ? 0 : horizontalCutsArray.get(i-1)+1;
-					int end = horizontalCutsArray.get(i);
-					for (int j=start; j<=end; j++) {
-						chipsPerPiece[i] += waffleGrid[j][col_index];
-					}
-				}
-
-				// We check if every piece has the correct number of pieces.
-				// If any piece has gone over, it's impossible.
-				boolean canCut = true;
-				for (int i=0; i<horizontalCutsArray.size(); i++) {
-					if (chipsPerPiece[i] != verticalCutTarget || chipsPerPiece[i]> verticalCutTarget) 
-						canCut = false;
-				
-				}
-
-				// This means we can make a vertical cut so all pieces to its left are correct.
-				// Just reset our counters to 0.
-				if (canCut) {
-					Arrays.fill(chipsPerPiece, 0);
+			
+			//now that we now what needs to be divided up for each row lets make sure we can actually make the cuts and have enough chips for each piece
+			for(int i=0;chipsPerHCut.length-1>i;i++) {
+				if (chipsPerHCut[i] != verticalCutTarget || chipsPerHCut[i]>verticalCutTarget) {
+					System.out.println("Looks like we can now cut this vertically and every one still gets the same amount of chips \nyayyyyy");
+					return true;
+				}else {
+					System.out.println("Turns out we actully don't have enough chips to go aroud");
+					return false;
 				}
 			}
-
 			return true;
 		}
 	
