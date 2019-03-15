@@ -136,16 +136,15 @@ public class WaffleChoppers {
 				// If any piece has gone over, it's impossible.
 				boolean canCut = true;
 				for (int i=0; i<horizontalCutsArray.size(); i++) {
-					if (chipsPerPiece[i] != verticalCutTarget) canCut = false;
-					if (chipsPerPiece[i] > verticalCutTarget) return false;
+					if (chipsPerPiece[i] != verticalCutTarget || chipsPerPiece[i]> verticalCutTarget) 
+						canCut = false;
+				
 				}
 
 				// This means we can make a vertical cut so all pieces to its left are correct.
 				// Just reset our counters to 0.
 				if (canCut) {
-//					System.out.println("We can cut again");
 					Arrays.fill(chipsPerPiece, 0);
-					System.out.println("YERRR" + canCut);
 				}
 			}
 
