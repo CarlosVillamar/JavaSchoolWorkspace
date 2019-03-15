@@ -43,17 +43,20 @@ public class WaffleChoppers {
 				// Here we essentially decorate our waffles
 				numChips = 0;
 				System.out.println("Remember . will denote a chip \n");
+				
+				//we will create a loop to fill out our two-dimensional array ( or matrix) 
 				for (int i=0; i<r; i++) {
 					
 					System.out.println("Enter the sequence for row " + (i+1) + "\n" );
 					String s = stdin.next();
 					for (int j=0; j<c; j++) {
-						if (s.charAt(j) == '.')
+						if (s.charAt(j) == '.') {
 							waffleGrid[i][j] = 0;
-						else {
-							waffleGrid[i][j] = 1;
-							numChips++;
+						}else {
+						waffleGrid[i][j] = 1;
+						numChips++;
 						}
+						
 					}
 				}
 
@@ -82,16 +85,16 @@ public class WaffleChoppers {
 			if (numChips%((h+1)*(v+1)) != 0) return false;
 			
 			if (numChips == 0) {
-				//no chips....so everything is even
-				System.out.println("There are no chips, so we  have no cuts to make");
+				//every cell in the waffle has a chip....so everything is even
+				System.out.println("we have an even number of chips, so we have no cuts to make ");
 				return true;
 			}
 
-			ArrayList<Integer> hCuts = new ArrayList<Integer>();
+			ArrayList<Integer> horizontalCutsArray = new ArrayList<Integer>();
 
 			// How many chips we need after cuts all in one direction.
-			int chipTargetPerPiece = numChips/(h+1);
-			System.out.println(" Our target number of chips after horizontal cuts is " );
+			int chips = numChips/(h+1);
+			System.out.println("The number of chips we have to work with " + chips );
 			int cut = 0;
 			
 			// We just greedily cut as soon as we can for horizontal cuts.
@@ -101,13 +104,13 @@ public class WaffleChoppers {
 					cut += waffleGrid[i][j];//remember by now our waffle cells have values of 1 or 0
 
 				// Time to cut.
-				if (cut == chipTargetPerPiece) {
-					hCuts.add(i);
+				if (cut == chips) {
+					horizontalCutsArray.add(i);
 					cut = 0;
 				}
 				
 				// If this triggers, it means we went from too few to too many, so it's impossible.
-				else if (cut > chipTargetPerPiece)
+				else if (cut > chips)
 					return false;
 			}
 
@@ -115,33 +118,34 @@ public class WaffleChoppers {
 			int verticalCutTarget = numChips/((h+1)*(v+1));
 			System.out.println("Our new chip target per piece after the vertical cuts will be "+ verticalCutTarget);
 
-			int[] chipsPerCut = new int[h+1];
+			int[] chipsPerPiece = new int[h+1];
 
 			// Go column by column to see if we can cut.
 			for (int col_index=0; col_index<c; col_index++) {
 
 				// Across each slice we add the chocolate chips, just for this single column for each piece.
-				for (int i=0; i<hCuts.size(); i++) {
-					int start = i == 0 ? 0 : hCuts.get(i-1)+1;
-					int end = hCuts.get(i);
+				for (int i=0; i<horizontalCutsArray.size(); i++) {
+					int start = i == 0 ? 0 : horizontalCutsArray.get(i-1)+1;
+					int end = horizontalCutsArray.get(i);
 					for (int j=start; j<=end; j++) {
-						chipsPerCut[i] += waffleGrid[j][col_index];
+						chipsPerPiece[i] += waffleGrid[j][col_index];
 					}
 				}
 
 				// We check if every piece has the correct number of pieces.
 				// If any piece has gone over, it's impossible.
 				boolean canCut = true;
-				for (int i=0; i<hCuts.size(); i++) {
-					if (chipsPerCut[i] != verticalCutTarget) canCut = false;
-					if (chipsPerCut[i] > verticalCutTarget) return false;
+				for (int i=0; i<horizontalCutsArray.size(); i++) {
+					if (chipsPerPiece[i] != verticalCutTarget) canCut = false;
+					if (chipsPerPiece[i] > verticalCutTarget) return false;
 				}
 
 				// This means we can make a vertical cut so all pieces to its left are correct.
 				// Just reset our counters to 0.
 				if (canCut) {
 //					System.out.println("We can cut again");
-					Arrays.fill(chipsPerCut, 0);
+					Arrays.fill(chipsPerPiece, 0);
+					System.out.println("YERRR" + canCut);
 				}
 			}
 

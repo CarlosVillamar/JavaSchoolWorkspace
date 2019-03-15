@@ -1,0 +1,427 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Debug (Launch)",
+            "request": "launch",
+            "mainClass": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ArraySearcherDemo<CMP326>",
+            "request": "launch",
+            "mainClass": "BinarySearch.ArraySearcherDemo",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-FO<CMP326>",
+            "request": "launch",
+            "mainClass": "BinarySearch.FO",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-FileOrganizer<CMP326>",
+            "request": "launch",
+            "mainClass": "BinarySearch.FileOrganizer",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MergeSortDemo<CMP326>",
+            "request": "launch",
+            "mainClass": "BinarySearch.MergeSortDemo",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ExceptionDemo<CMP326>",
+            "request": "launch",
+            "mainClass": "ExceptionDemo.ExceptionDemo",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Letter<CMP326>",
+            "request": "launch",
+            "mainClass": "Letter",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MultipleBirths<CMP326>",
+            "request": "launch",
+            "mainClass": "MultipleBirths",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tester<CMP326>",
+            "request": "launch",
+            "mainClass": "PlayingWithManmmals.Tester",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ABrecursion<CMP326>",
+            "request": "launch",
+            "mainClass": "Recursion.ABrecursion",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-RecursiveCountdown<CMP326>",
+            "request": "launch",
+            "mainClass": "Recursion.RecursiveCountdown",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TextFileInputDemo<CMP326>",
+            "request": "launch",
+            "mainClass": "Stream.TextFileInputDemo",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TextFileOutputDemo<CMP326>",
+            "request": "launch",
+            "mainClass": "Stream.TextFileOutputDemo",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SumofSsquares<CMP326>",
+            "request": "launch",
+            "mainClass": "SumofSsquares",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SearchingArray<CMP326>",
+            "request": "launch",
+            "mainClass": "arrayPlay.SearchingArray",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TestingTheSearcher<CMP326>",
+            "request": "launch",
+            "mainClass": "arrayPlay.TestingTheSearcher",
+            "projectName": "CMP326"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tester2<CMP338>",
+            "request": "launch",
+            "mainClass": "ADT_lists.Tester2",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-tester<CMP338>",
+            "request": "launch",
+            "mainClass": "ADT_lists.tester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-chessTest<CMP338>",
+            "request": "launch",
+            "mainClass": "CH6.chessTest",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CH3_Example1<CMP338>",
+            "request": "launch",
+            "mainClass": "Recursion.CH3_Example1",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ch3_example2<CMP338>",
+            "request": "launch",
+            "mainClass": "Recursion.Ch3_example2",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Examples<CMP338>",
+            "request": "launch",
+            "mainClass": "Recursion.Examples",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ST_6<CMP338>",
+            "request": "launch",
+            "mainClass": "Recursion.ST_6",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ST_Q1<CMP338>",
+            "request": "launch",
+            "mainClass": "Recursion.ST_Q1",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ST_Q2<CMP338>",
+            "request": "launch",
+            "mainClass": "Recursion.ST_Q2",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ST_Q3<CMP338>",
+            "request": "launch",
+            "mainClass": "Recursion.ST_Q3",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ST_Q5<CMP338>",
+            "request": "launch",
+            "mainClass": "Recursion.ST_Q5",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-InfixTester<CMP338>",
+            "request": "launch",
+            "mainClass": "StackPostFixCal.InfixTester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PostFixTester<CMP338>",
+            "request": "launch",
+            "mainClass": "StackPostFixCal.PostFixTester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-swapTest<CMP338>",
+            "request": "launch",
+            "mainClass": "StackPostFixCal.swapTest",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-swapTest2<CMP338>",
+            "request": "launch",
+            "mainClass": "StackPostFixCal.swapTest2",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StackExamples<CMP338>",
+            "request": "launch",
+            "mainClass": "Stacks.StackExamples",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StackTester<CMP338>",
+            "request": "launch",
+            "mainClass": "Stacks.StackTester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-flightTest<CMP338>",
+            "request": "launch",
+            "mainClass": "flightPath.flightTest",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tester<CMP338>",
+            "request": "launch",
+            "mainClass": "generics.Tester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tester<CMP338>(1)",
+            "request": "launch",
+            "mainClass": "generics.iterators.Tester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-DSFTester<CMP338>",
+            "request": "launch",
+            "mainClass": "graphs.DSFTester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tester<CMP338>(2)",
+            "request": "launch",
+            "mainClass": "graphs.Tester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tester<CMP338>(3)",
+            "request": "launch",
+            "mainClass": "heaps.Tester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Examples<CMP338>(1)",
+            "request": "launch",
+            "mainClass": "queues.Examples",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tester<CMP338>(4)",
+            "request": "launch",
+            "mainClass": "queues.Tester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tester<CMP338>(5)",
+            "request": "launch",
+            "mainClass": "sortingSearching.Tester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Table_Tester<CMP338>",
+            "request": "launch",
+            "mainClass": "tables.Table_Tester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tester<CMP338>(6)",
+            "request": "launch",
+            "mainClass": "treeRefBased.Tester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tester<CMP338>(7)",
+            "request": "launch",
+            "mainClass": "trees.Tester",
+            "projectName": "CMP338"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Server<CMP342>",
+            "request": "launch",
+            "mainClass": "GUIChat.Server",
+            "projectName": "CMP342"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-OneTime<CMP342>",
+            "request": "launch",
+            "mainClass": "OneTimePadCipher.src.OneTime",
+            "projectName": "CMP342"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-OneTime2<CMP342>",
+            "request": "launch",
+            "mainClass": "OneTimePadCipher.src.OneTime2",
+            "projectName": "CMP342"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Server<CMP342>(1)",
+            "request": "launch",
+            "mainClass": "Server",
+            "projectName": "CMP342"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Client<CMP342>",
+            "request": "launch",
+            "mainClass": "Sockets.Client",
+            "projectName": "CMP342"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Server<CMP342>(2)",
+            "request": "launch",
+            "mainClass": "Sockets.Server",
+            "projectName": "CMP342"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-OneTime<OneTimePadCipher>",
+            "request": "launch",
+            "mainClass": "OneTime",
+            "projectName": "OneTimePadCipher"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-OneTime2<OneTimePadCipher>",
+            "request": "launch",
+            "mainClass": "OneTime2",
+            "projectName": "OneTimePadCipher"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ReceiveSocket<SendReceive>",
+            "request": "launch",
+            "mainClass": "ReceiveSocket",
+            "projectName": "SendReceive"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SendReceiveSocket<SendReceive>",
+            "request": "launch",
+            "mainClass": "SendReceiveSocket",
+            "projectName": "SendReceive"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Server<chat>",
+            "request": "launch",
+            "mainClass": "chat.Server",
+            "projectName": "chat"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SavingTheUniverseAgain<gooogleCodeCollection>",
+            "request": "launch",
+            "mainClass": "gooogleCodeCollection.SavingTheUniverseAgain",
+            "projectName": "gooogleCodeCollection"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TroubleSort<gooogleCodeCollection>",
+            "request": "launch",
+            "mainClass": "gooogleCodeCollection.TroubleSort",
+            "projectName": "gooogleCodeCollection"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-WaffleChoppers<gooogleCodeCollection>",
+            "request": "launch",
+            "mainClass": "gooogleCodeCollection.WaffleChoppers",
+            "projectName": "gooogleCodeCollection"
+        }
+    ]
+}
