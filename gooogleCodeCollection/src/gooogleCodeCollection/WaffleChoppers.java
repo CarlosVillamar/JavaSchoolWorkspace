@@ -16,7 +16,7 @@ public class WaffleChoppers {
 		public static int h;//horizontal cuts
 		public static int v;//vertical cuts
 
-		public static int numOfChips;//number of cuts in each row
+		public static int numOfChips;//number of chips in the waffle
 
 		public static int[][] waffleGrid;//this is the two dimensional array our grid consists of 
 
@@ -26,7 +26,7 @@ public class WaffleChoppers {
 			System.out.println("Enter the number of waffles we would like to make: ");
 			int waffleNum= stdin.nextInt();//How many waffles are we going to make 
 
-			// Process each case.
+			// Process each waffle
 			for (int loop=1; loop<=waffleNum; loop++) {
 
 				System.out.println("Enter the number of row our waffle will have: ");
@@ -52,11 +52,11 @@ public class WaffleChoppers {
 					for (int j=0; j<c; j++) {
 						if (s.charAt(j) == '.') {
 							waffleGrid[i][j] = 0;
-							//we basically set the index in the matrix to have o to denote there is no chip in this cell
+							//we basically set the index in the matrix to have o to denote there is a chip in this cell
 						}else {
-						//setting an index to 1 in the matrix means we have a chip in this cell and increment a counter to keep track of the number of chips in the whole waffle
+						//setting an index to 1 in the matrix means we do not have a chip in this cell and increment a counter to keep track of the number of chips in the whole waffle
 						waffleGrid[i][j] = 1;
-						numOfChips++;
+						numOfChips++;//the idea of the numOfChips  counter is too keep track of how many chips we have to distribute not the amount we actually have
 						}
 						
 					}
@@ -80,7 +80,7 @@ public class WaffleChoppers {
 			 */
 			 
 			/**The statements below will check if the number of chips in this waffle  is a factor of the various cuts we have to make in the waffle
-			 * this allows us to filter out data sets that will not work, ultimately if we find a set of data that are even or odd numbers, they are not compatiable because 
+			 * this allows us to filter out data sets that will not work, ultimately if we find a set of data that are even or odd numbers, they are not compatible because 
 			 * it would indicate we don't have enough cuts or enough chips to divide evenly**/
 			
 			if (numOfChips%(h+1) != 0 || numOfChips%(v+1) != 0 || numOfChips%((h+1)*(v+1)) != 0 ) {
