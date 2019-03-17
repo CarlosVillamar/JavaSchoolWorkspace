@@ -16,7 +16,7 @@ public class WaffleChoppers {
 		public static int h;//horizontal cuts
 		public static int v;//vertical cuts
 
-		public static int numChips;//number of chocolate chips
+		public static int numOfChips;//number of chips in the waffle
 
 		public static int[][] waffleGrid;//this is the two dimensional array our grid consists of 
 
@@ -26,7 +26,7 @@ public class WaffleChoppers {
 			System.out.println("Enter the number of waffles we would like to make: ");
 			int waffleNum= stdin.nextInt();//How many waffles are we going to make 
 
-			// Process each case.
+			// Process each waffle
 			for (int loop=1; loop<=waffleNum; loop++) {
 
 				System.out.println("Enter the number of row our waffle will have: ");
@@ -41,7 +41,7 @@ public class WaffleChoppers {
 				v = stdin.nextInt();
 
 				// Here we essentially decorate our waffles
-				numChips = 0;
+				numOfChips= 0;
 				System.out.println("Remember . will denote a chip \n");
 				
 				//we will create a loop to fill out our two-dimensional array ( or matrix) 
@@ -52,94 +52,108 @@ public class WaffleChoppers {
 					for (int j=0; j<c; j++) {
 						if (s.charAt(j) == '.') {
 							waffleGrid[i][j] = 0;
+							//we basically set the index in the matrix to have o to denote there is a chip in this cell
 						}else {
+						//setting an index to 1 in the matrix means we do not have a chip in this cell and increment a counter to keep track of the number of chips in the whole waffle
 						waffleGrid[i][j] = 1;
-						numChips++;
+						numOfChips++;//the idea of the numOfChips  counter is too keep track of how many chips we have to distribute not the amount we actually have
 						}
 						
 					}
 				}
 
 				// Solve and output the result.
-				boolean res = solve();
-				if (res)
-					System.out.println("Case #"+loop+": POSSIBLE");
+				boolean chipsForEveryOne = waffleMaker();
+				if (chipsForEveryOne)
+					System.out.println("Waffle #"+loop+": This waffle will please everyone");
 				else
-					System.out.println("Case #"+loop+": IMPOSSIBLE");
+					System.out.println("Waffle #"+loop+": we need to redistribute the chips on this waffle");
 			}
 			stdin.close();
 			System.exit(0);
 		}
 
-		public static boolean solve() {
+		public static boolean waffleMaker() {
 			/**
-			 * The purpose  of  this boolean function is to figure out whether  or not we can cut our waffle and
+			 * The purpose  of  this boolean function is to figure out whether or not we can cut our waffle and
 			 * still meet our chip criteria
 			 */
 			 
-			//The statements below we will determine if we have too many cuts or too little cuts compared to the number of chips
-			//we determine this by trying to find out if the numbers are pairs of even or odd
-			//this way we filter out a waffle with data that is already destined to fail
-			if (numChips%(h+1) != 0 || numChips%(v+1) != 0 || numChips%((h+1)*(v+1)) != 0 ) {
+			/**The statements below will check if the number of chips in this waffle  is a factor of the various cuts we have to make in the waffle
+			 * this allows us to filter out data sets that will not work, ultimately if we find a set of data that are even or odd numbers, they are not compatible because 
+			 * it would indicate we don't have enough cuts or enough chips to divide evenly**/
+			
+			if (numOfChips%(h+1) != 0 || numOfChips%(v+1) != 0 || numOfChips%((h+1)*(v+1)) != 0 ) {
 				System.out.println("Not enough chips to distrubute evenly") ;
 				return false;
 				}
 
-			if (numChips == 0) {
-				//every cell in the waffle has a chip....so everything is even
-				System.out.println("we have an even number of chips, so all are cuts will have an equal distribution of chips");
+			//this statement conforms we do not have any chips
+			if (numOfChips == 0) {
+				System.out.println("we dont have any chips");
 				return true;
 			}
 
+			//lets make a list to keep track of  which rows we can divide the chips up evenly 
 			ArrayList<Integer> horizontalCutsArray = new ArrayList<Integer>();
 
-			// How many chips we need after cuts all in one direction.
-			int chips = numChips/(h+1);
-			System.out.println("The number of chips we have to work with " + chips );
-			int cut = 0;
-			// New target in a single piece.
+			// How many chips do we need after cuts for each horizontal cut
+			int chipsPerRow = numOfChips/(h+1);
+			System.out.println("\nThe number of cuts we have to make per row " + chipsPerRow );
+			
+			//lets determine what our chips per column will be
+			int chipsPerCol= numOfChips/((h+1)*(v+1));
+			System.out.println("Our new chip target per piece after the vertical cuts will be "+ chipsPerCol + "\n");
+			
+			//we need a list to keep track of the number of chips in each row
+			int[] chipsInEachRow = new int[h+1];
 
-
-			// We just greedily cut as soon as we can for horizontal cuts.
-			for (int i=0; i<r; i++) {
-
-				for (int j=0;j<c;j++)
-					cut += waffleGrid[i][j];//remember by now our waffle cells have values of 1 or 0
-				System.out.println("cuts we have to make for this row " + cut);
+			// chips in a single piece.
+			int chipTally = 0;
+			
+			//lets double check our waffle matrix  so we can tally the chips for each row  
+			//and compare it to the number of chips per row  to make sure  we can still divides chips evenly
+			
+			for (int i=0; i<r; i++) {//loop for the rows
+				for (int j=0;j<c;j++)//column loop
+					
+					//remember by now our waffle cells have values of 1 or 0, lets tally them up to figure out how many chips this row willl have
+					chipTally += waffleGrid[i][j];
+					System.out.println("\nnumber of chips we have to have for this row " + chipTally);
 			
 
-				// Time to cut.
-				if (cut == chips) {
+				// if  the chipTally for this row matches our estimated chipsPerRow then lets add it to the array and reset the taly for the next row 
+				if (chipTally== chipsPerRow) {
 					horizontalCutsArray.add(i);
-					System.out.println("We have an equal number of chips and cuts to make in this row" );
-					cut = 0;
+					System.out.println("\nWe have an equal number of chips and cuts to make in this row" );
+					chipTally = 0;
 				
-				}else if (cut > chips) {
-					// If this triggers, it means we went from too few to too many, so it's impossible.
-					System.out.println("this row contains too many cuts we have to make, there are not enough chips in this row to distrubute evenly ");
+				}else if (chipTally > chipsPerRow) {
+					// turns out we have too many chips then initially thought, this isnt gonna work
+					System.out.println("\nthis row contains too many cuts we have to make, there are not enough chips in this row to distrubute evenly ");
 					return false;
 				}
 			}
 
-			//we now need to establish a two dimensional array based on the rows cuts we have made  and the columns we have to now cut
-			int[] chipsPerHCut = new int[h+1];
+			//we now need to establish a new two dimensional array based on the rows cuts we have made  
+			//and the columns we have to now cut
 			for (int col_index=0; col_index<c; col_index++) {
-				for (int i=0; i<horizontalCutsArray.size()-1; i++) {
-					chipsPerHCut[i] += waffleGrid[i][col_index];
-				
+				for (int row_index=0; row_index<horizontalCutsArray.size()-1; row_index++) {
+					chipsInEachRow[row_index] += waffleGrid[row_index][col_index];
 				}
 			}
 			
-			int verticalCutTarget = numChips/((h+1)*(v+1));
-			System.out.println("Our new chip target per piece after the vertical cuts will be "+ verticalCutTarget);
 			
-			//now that we now what needs to be divided up for each row lets make sure we can actually make the cuts and have enough chips for each piece
-			for(int i=0;chipsPerHCut.length-1>i;i++) {
-				if (chipsPerHCut[i] != verticalCutTarget || chipsPerHCut[i]>verticalCutTarget) {
-					System.out.println("Looks like we can now cut this vertically and every one still gets the same amount of chips \nyayyyyy");
+			
+			//now that we now what needs to be divided up for each row lets make sure we can actually make the cuts 			
+			for(int chipsPerPiece: chipsInEachRow) {
+				//if the number of chip per piece do not match  or are greater than the number of chips per column then  this confirms we make the cuts and have the same amount of chips in each piece
+				if(chipsPerPiece != chipsPerCol || chipsPerPiece > chipsPerCol) {
+					System.out.println("\nLooks like we can now cut this vertically and every one still gets the same amount of chips \nyayyyyy");
 					return true;
 				}else {
-					System.out.println("Turns out we actully don't have enough chips to go aroud");
+					//keep in mind if this case triggers it means we have a row that does not have enough cuts in distribute the chips evenly
+					System.out.println("\nTurns out we actully don't have enough chips to go aroud");
 					return false;
 				}
 			}
