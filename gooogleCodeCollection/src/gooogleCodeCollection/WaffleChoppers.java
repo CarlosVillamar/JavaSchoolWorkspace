@@ -117,7 +117,7 @@ public class WaffleChoppers {
 			for (int i=0; i<r; i++) {//loop for the rows
 				for (int j=0;j<c;j++)//column loop
 					
-					//remember by now our waffle cells have values of 1 or 0, lets tally them up to figure out how many chips this row willl have
+					//remember by now our waffle cells have values of 1 or 0, lets tally them up to figure out how many chips this row will have
 					chipTally += waffleGrid[i][j];
 					System.out.println("\nnumber of chips we have to have for this row " + chipTally);
 			
