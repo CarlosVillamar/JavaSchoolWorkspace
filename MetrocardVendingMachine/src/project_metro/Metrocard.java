@@ -29,13 +29,16 @@ public class Metrocard {
 	
 //	private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	
+	
+	
 	public Metrocard() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public Metrocard(String cardType, int s) {
+		//This is a constructor to purchase a new card or add a pre-paid value to their card
 		this.cardType = cardType;
-		this.cardID =  new UUID(10,2);
+		cardID = UUID .randomUUID();
 		this.activeStatus = true;
 		this.activeDate = new Date(1);
 		setExpirationDate();
@@ -44,13 +47,14 @@ public class Metrocard {
 		}else if( cardType == "Unlimited") {
 			unlimitedValues(s);
 			unlimited = true;
-			
+			getID();
 		}else if(cardType == "Single Ride") {
 			prePaidValues(5);
 		}
 	}
 	
 	public Metrocard(String cardType, double s) {
+		//Constructor for our user to assign their own value regardless if it is a new card or a pre-owned card
 		this.cardType = cardType;
 		this.cardID =  new UUID(10,2);
 		this.activeStatus = true;
@@ -60,25 +64,28 @@ public class Metrocard {
 		
 	}
 	
+	//Below are methods to retrieve various statuses
+	public boolean getActiveStatus() {
+		return activeStatus;
+	}
+	public boolean getExpiredStatus() {
+		return expired;
+	}
+	
+	//Method to retrieve  cardType
 	public String  getCardType() {
 		return cardType;
 	}
-
-//	public String  setCardType(String s) {
-//		cardType = s;
-//		return cardType;
-//	}
-//	
-//	public  void setID() {
-//		cardID =  new UUID(10,2);
-//		activeStatus = true;
-//		activeDate = new Date(1);
-//		setExpirationDate();
-//	}
 	
+	//Method to retrieve ID
 	public  UUID getID() {
 		return cardID;
 	}
+	
+	/**
+	 * Below are methods centered around the object's values
+	 * 
+	 */
 	
 	public double  addValue (double value) {
 		currentValue = value + currentValue;
@@ -90,7 +97,10 @@ public class Metrocard {
 		return currentValue;
 	}
 	
-
+	public double getValue() {
+		// TODO Auto-generated method stub
+		return currentValue;
+	} 
 	
 	public double prePaidValues(int opt) {
 		switch(opt){
@@ -146,6 +156,12 @@ public class Metrocard {
 			break;
 		}
 	}
+	
+	
+	//Below are methods created to handle date operations
+	public Date getActiveDate() {
+		return activeDate;
+	}
 
 	public Date getExpirationDate() {
 		return expirationDate;
@@ -161,33 +177,24 @@ public class Metrocard {
 		unlimitedEndDate = new Date(System.currentTimeMillis() + date);
 		return unlimitedEndDate;
 	}
+	 public Date getUnlimitedEndDate() {
+		 return unlimitedEndDate;
+	 }
+
+//unused methods below	 
 	
-	
-	
-	public void getCardInfromation() {
-		//expirationDate 
-		//card type
-//		if(!expired) {
-//			if(cardType != "regular") {
-//				//expirationDate
-//				//active
-//				//cardType
-//				//id
-//			}else {
-//				//expiration date
-//				//value
-//				//id
-//			}
-//		}else {
-//			//exipiration date
+//	public String  setCardType(String s) {
+//			cardType = s;
+//			return cardType;
+//		}
+	//	
+//		public  void setID() {
+//			cardID =  new UUID(10,2);
+//			activeStatus = true;
+//			activeDate = new Date(1);
+//			setExpirationDate();
 //		}
 		
-		System.out.println("coming soon");
-//		
-	}
 
-	public double getValue() {
-		// TODO Auto-generated method stub
-		return currentValue;
-	} 
+	
 }
