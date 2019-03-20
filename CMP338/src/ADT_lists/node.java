@@ -15,5 +15,4 @@ public class node {
 		next = nextNode;//now we can point the next item as nextNode
 
 	}
-
 }

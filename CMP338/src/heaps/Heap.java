@@ -18,7 +18,8 @@ public class Heap<T> {
 	}
 	
 	public Heap(ArrayList<T> arr){
-		items = arr;//already have a messy array that we want to sort into a heap
+	//already have a messy array that we want to sort into a heap
+		items = arr;
 		this.heapifyUp();
 	}
 	
