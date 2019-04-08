@@ -18,6 +18,12 @@ public class Heap {
 	public boolean isEmpty() {
 		return (currentSize == 0);
 	}
+	
+	public Node getMax() {
+		System.out.println(heapArray[0].getKey());
+		System.out.println();
+		return heapArray[0];
+	}
 
 	public boolean insert(int key) {
 		if (currentSize == maxSize) { // array is full

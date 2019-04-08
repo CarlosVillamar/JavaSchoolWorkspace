@@ -6,6 +6,7 @@ public class Graph {
 	private int vCount; // number of vertices
 	private int eCount; // Number of edges
 	
+	@SuppressWarnings("rawtypes")
 	private ArrayList[] adjacents; // array of integer lists
 	
 	public Graph(int vCount){
@@ -14,7 +15,7 @@ public class Graph {
 		adjacents = new ArrayList [vCount];
 		
 		for(int i = 0; i < vCount; i++){
-			adjacents[i] = new ArrayList();
+			adjacents[i] = new ArrayList<Object>();
 		}
 	}
 	
@@ -26,6 +27,7 @@ public class Graph {
 		return eCount;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void addEdge(int src, int dest){
 		adjacents[src].add(dest);
 		eCount++;

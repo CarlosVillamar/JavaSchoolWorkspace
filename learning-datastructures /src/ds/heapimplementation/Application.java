@@ -13,6 +13,7 @@ public class Application {
 		newHeap.insert(88);
 		newHeap.insert(42);
 		newHeap.insert(7);
+		newHeap.getMax();
 		
 		// The assignment that follows will complete the body of the method used below.
 		newHeap.displayHeap();

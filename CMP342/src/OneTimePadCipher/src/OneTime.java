@@ -1,4 +1,3 @@
-package OneTimePadCipher.src;
 import java.util.Scanner;
 
 
