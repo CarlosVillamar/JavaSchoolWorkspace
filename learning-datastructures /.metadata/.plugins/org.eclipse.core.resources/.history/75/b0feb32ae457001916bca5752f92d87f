@@ -1,0 +1,16 @@
+package practical.BST;
+
+public class Node {
+	
+	int key;
+	int value;
+	Node leftChild, rightChild;
+	
+	public Node(Node node, int value) {
+		super();
+		this.key = node.key;
+		this.value = value;
+	}	
+	
+	
+}

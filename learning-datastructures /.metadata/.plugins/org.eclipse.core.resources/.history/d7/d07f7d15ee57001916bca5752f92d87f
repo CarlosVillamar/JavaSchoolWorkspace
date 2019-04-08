@@ -1,0 +1,137 @@
+package practical.BST;
+
+public class BST {
+
+	private Node root;
+
+	private Node insertNode(Node current, int key) {
+		Node newNode = new Node(key);
+
+		if (current == null) {
+			current = newNode;
+			return current;
+		}
+
+		if (key < current.key) {
+			current.leftChild = insertNode(current.leftChild, key);
+		}
+		if (key > current.key) {
+			current.rightChild = insertNode(current.rightChild, key);
+
+		} else {
+			return current;
+		}
+
+		return current;
+	}
+
+	public void addFromRoot(int Key) {
+		root = insertNode(root, Key);
+	}
+
+	private boolean searchForNodeRecursive(Node node, int Key) {
+		Node current = node;
+		if (current == null) {
+			return false;
+		}
+		if (current.key == Key) {
+			return true;
+		}
+		return Key < current.key ? searchForNodeRecursive(node.leftChild, Key)
+				: searchForNodeRecursive(node.rightChild, Key);
+	}
+
+	public boolean searchForNode(int key) {
+		return searchForNodeRecursive(root, key);
+
+	}
+
+	private Node deleteNode(Node current, int delVal) {
+		// if current node we pass in is null
+		if (current == null) {
+			System.out.println("Node not found \n");
+			return null;
+		}
+
+		if (delVal == current.key) {
+			// a node with no children
+			if (current.leftChild == null && current.rightChild == null) {
+				System.out.println("We can delete this safely without reordering \n");
+				return null;
+			}
+
+			// a node with one child
+			if (current.rightChild == null)
+				return current.leftChild;
+			if (current.leftChild == null)
+				return current.rightChild;
+
+			// a node with 2 children VERY TRICKY!!!!!!!!!!!
+			int smallVal = findSmallest(current.rightChild);
+			current.key = smallVal;
+			current.rightChild = deleteNode(current.rightChild, smallVal);
+
+			return current;
+
+		}
+
+		// if else we need to find the value we want to delete;
+		if (delVal < current.key) {
+			current.leftChild = deleteNode(current.leftChild, delVal);
+			System.out.print("we need to travel down a left sub tree \n");
+			return current;
+		} else {
+			current.rightChild = deleteNode(current.rightChild, delVal);
+			System.out.print("we need to travel down a right sub tree \n");
+			return current;
+		}
+
+	}
+
+	private int findSmallest(Node node) {
+		System.out.print("Stay posted this node has 2 children");
+		return node.leftChild == null ? node.key : findSmallest(node.leftChild);
+	}
+
+	public void delete(int key) {
+		root = deleteNode(root, key);
+	}
+
+	public void InOrder(Node node) {
+		if (node != null) {
+
+			InOrder(node.leftChild);
+			System.out.print(" " + node.key);
+			InOrder(node.rightChild);
+		}
+	}
+	
+	public void printInOrder() {
+		InOrder(root);
+	}
+	
+	public void preOrder(Node node) {
+		if(node !=null) {
+			System.out.println(" \n");
+			System.out.print(" " + node.key);
+			preOrder(node.leftChild);
+			preOrder(node.rightChild);
+		}
+	}
+	
+	public void printInPreOrder() {
+		preOrder(root);
+	}
+	public void inPostOrder(Node node) {
+	    if (node != null) {
+	        inPostOrder(node.leftChild);
+	        inPostOrder(node.rightChild);
+	        System.out.println(" " + node.value);
+	    }
+	}
+	
+	public void printInPostOrder() {
+		inPostOrder(root);
+	}
+
+}

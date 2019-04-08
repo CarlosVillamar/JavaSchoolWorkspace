@@ -1,0 +1,37 @@
+package practical.BST;
+
+
+
+public class app {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BST bst = new BST();
+		bst.addFromRoot(10);
+		bst.addFromRoot(25); 
+		bst.addFromRoot(20);
+		bst.addFromRoot(30);
+		bst.addFromRoot(4);
+		bst.addFromRoot(5);
+		bst.addFromRoot(7);
+		bst.addFromRoot(70);
+		
+		bst.printInOrder();
+//		bst.printInPreOrder();
+//		bst.printInPostOrder();
+//		bst.printInBreathFirstOrder();
+		
+//		bst.delete(25);
+//		bst.delete(2);
+		
+//		System.out.print(bst.searchForNode(30)+"\n");
+//		
+//		System.out.print(bst.searchForNode(25));
+	
+		
+		// The assignment that follows will complete the body of the method used below.
+//		tree.displayTree();
+		
+	}
+
+}

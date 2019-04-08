@@ -1,0 +1,44 @@
+package practical.BST;
+
+public class BST {
+
+	private Node root;
+
+	private Node insertNode(Node node, int Key) {
+		int value = Key;
+		Node newNode = new Node(node,Key);
+		Node current = node;
+
+		while (current != null) {
+
+			if (newNode.key <= current.key) {
+				current.leftChild = insertNode(current.leftChild, value);
+			} else {
+				current.rightChild = insertNode(current.rightChild, value);
+
+			}
+		}
+
+		current = newNode;
+		return current;
+	}
+
+	private void addFromRoot(int Key) {
+		root = insertNode(root, Key);
+	}
+
+	private boolean searchForNode(Node node, int Key) {
+		Node current = node;
+		if (current == null) {
+			return false;
+		}
+		if (current.key == Key) {
+			return true;
+		}
+		return Key < current.key ? searchForNode(node.leftChild, Key) : searchForNode(node.rightChild, Key);
+	}
+
+	private void deleteNode(int delVal) {
+
+	}
+}

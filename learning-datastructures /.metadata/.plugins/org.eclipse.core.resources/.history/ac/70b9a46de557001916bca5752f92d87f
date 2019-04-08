@@ -1,0 +1,48 @@
+package practical.BST;
+
+public class BST {
+
+	private Node root;
+
+	private Node insertNode(Node node, int key) {
+		Node newNode = new Node(node,key);
+		Node current = node;
+
+		while (current != null) {
+
+			if (newNode.key <= current.key) {
+				current.leftChild = insertNode(current.leftChild,key);
+			} else {
+				current.rightChild = insertNode(current.rightChild,key);
+
+			}
+		}
+
+		current = newNode;
+		return current;
+	}
+
+	private void addFromRoot(int Key) {
+		root = insertNode(root, Key);
+	}
+
+	private boolean searchForNodeRecursive(Node node, int Key) {
+		Node current = node;
+		if (current == null) {
+			return false;
+		}
+		if (current.key == Key) {
+			return true;
+		}
+		return Key < current.key ? searchForNodeRecursive(node.leftChild, Key) : searchForNodeRecursive(node.rightChild, Key);
+	}
+	public boolean searchForNode(int key) {
+		return searchForNodeRecursive(root, key);
+		
+	}
+	
+
+	private void deleteNode(int delVal) {
+
+	}
+}
