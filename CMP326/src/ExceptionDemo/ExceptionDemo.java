@@ -12,6 +12,7 @@ public class ExceptionDemo {
 	int donutCount = keyboard.nextInt();
 	System.out.println("Enter number of glasses of milk:");
 	int milkCount = keyboard.nextInt();
+	keyboard.close();
 	
 	if (milkCount < 1)
 		throw new DividedByZero();

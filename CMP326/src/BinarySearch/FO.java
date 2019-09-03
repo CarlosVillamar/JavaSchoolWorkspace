@@ -2,18 +2,14 @@ package BinarySearch;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 import ExceptionDemo.WindowDestroyer;
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -21,6 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+@SuppressWarnings("serial")
 public class FO extends JFrame implements ActionListener
 {
 public static final int WIDTH = 400;
@@ -84,8 +81,6 @@ public void actionPerformed(ActionEvent e)
 		firstLineField.setText("Unexpected error.");
 }
 private void Listfile(File[] paths) {
-	// TODO Auto-generated method stub
-	Scanner fileInput = null;
 	String fileName = fileNameField.getText();
 	File fileObject = new File(fileName);
 
@@ -143,7 +138,6 @@ fileInput.close();
 private void addFile() {
 	// TODO Auto-generated method stub
 	
-	Scanner fileInput = null;
 	String fileName = fileNameField.getText();
 	File fileObject = new File(fileName);
 	PrintWriter printWriter = null;
@@ -177,8 +171,6 @@ private void resetFields()
 }
 private void removeFile()
 {
-	Scanner fileInput = null;
-	String firstLine;
 	String fileName = fileNameField.getText();
 	File fileObject = new File(fileName);
 	if (!fileObject.exists())

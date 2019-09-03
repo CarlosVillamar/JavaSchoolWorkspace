@@ -12,13 +12,12 @@ package PlayingWithManmmals;
 		
 		public static void main(String[]args){
 			Mammal m1 = new Mammal();
-			Mammal m2 = new Mammal();
-			Mammal hotMammal = new Mammal(102.5);
-			Dog d1 = new Dog();
-			Dog d2 = new Dog("green", 7, 107);
-			Dog d3 = new Dog();
-			//Object myObj = new Object();	
-			person p1 = new person(36.5);
+			new Mammal();
+			new Mammal(102.5);
+			new Dog();
+			new Dog("green", 7, 107);
+			new Dog();
+			new person(36.5);
 			Mammal [] mamArr = new Mammal[7];
 			mamArr[0] = m1;
 			

@@ -9,10 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import java.util.Scanner;
+
 
 @SuppressWarnings("serial")
-public class LongestWordProject<var> extends JApplet implements ActionListener 
+public class LongestWordProject extends JApplet implements ActionListener 
 {
 	public String LWord;//private?
 	//public String LWords;//private?

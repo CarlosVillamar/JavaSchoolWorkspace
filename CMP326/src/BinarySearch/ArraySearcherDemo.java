@@ -1,7 +1,6 @@
 package BinarySearch;
 
 import java.util.Scanner;
-import java.util.Scanner;
 public class ArraySearcherDemo
 {
 public static void main(String[] args)
@@ -33,6 +32,7 @@ do
 	ans = keyboard.next();
 } 
 	while (ans.equalsIgnoreCase("yes"));
+	keyboard.close();
 	System.out.println(
 			"May you find what you're searching for.");
 }

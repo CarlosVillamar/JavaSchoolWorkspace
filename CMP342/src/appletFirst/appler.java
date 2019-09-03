@@ -2,14 +2,10 @@ package appletFirst;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.ActiveEvent;
 import java.awt.Button;
-import java.awt.Event;
 import java.awt.Label;
 import java.awt.TextField;
 import java.applet.Applet;
-import java.math.*;
-import java.awt.*;
 
 public class appler {
 	
@@ -33,8 +29,8 @@ public class appler {
 		resultLB.setBounds(10,60,100,20);
 		areaBN.setBounds(10,90,100,20);
 		
-		AreaListener al = new AreaListener();
-		CircleListener c1 = new CircleListener();
+		new AreaListener();
+		new CircleListener();
 		
 		add(radiusLB);
 		add(radiusTF);

@@ -3,8 +3,6 @@
  */
 package project_metro;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Metrocard {
 
-	private boolean expired, unlimited = false; 
+	private boolean expired; 
 
 	public boolean activeStatus = false;
 	
@@ -46,7 +44,6 @@ public class Metrocard {
 			prePaidValues(s);
 		}else if( cardType == "Unlimited") {
 			unlimitedValues(s);
-			unlimited = true;
 			getID();
 		}else if(cardType == "Single Ride") {
 			prePaidValues(5);
@@ -128,28 +125,24 @@ public class Metrocard {
 		switch(opt) {
 		case 1: //single day
 			cardType = "Single day";
-			unlimited = true;
 			activeDate = new Date(1);
 			long tomorrow = TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS);
 			setUnlimitedEndDate(tomorrow);
 			break;
 		case 2://monthly
 			cardType = "Monthly unlimited";
-			unlimited = true;
 			activeDate = new Date(1);
 			long endOfTheMonth = TimeUnit.MILLISECONDS.convert(30, TimeUnit.DAYS);
 			setUnlimitedEndDate(endOfTheMonth);
 			break;
 		case 3://weekly
 			cardType = " Weekly unlimited";
-			unlimited = true;
 			activeDate = new Date(1);
 			long endOfTheWeek= TimeUnit.MILLISECONDS.convert(7, TimeUnit.DAYS);
 			setUnlimitedEndDate(endOfTheWeek);
 			break;
 		case 4://xbus pass	
 			cardType = " Express bus weekly pass";
-			unlimited = true;
 			activeDate = new Date(1);
 			long endOfTheWeek2= TimeUnit.MILLISECONDS.convert(7, TimeUnit.DAYS);
 			setUnlimitedEndDate(endOfTheWeek2);

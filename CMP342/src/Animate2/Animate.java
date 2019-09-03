@@ -79,7 +79,7 @@ public class Animate extends Applet implements Runnable, KeyListener
 
          try
          {
-            t.sleep(50);
+            Thread.sleep(50);
          }
          catch(Exception x){};
 
@@ -93,24 +93,24 @@ public class Animate extends Applet implements Runnable, KeyListener
 
    public void keyPressed(KeyEvent e)
    {
-      if (e.getKeyCode() == e.VK_LEFT)  ltPressed = true;
+      if (e.getKeyCode() == KeyEvent.VK_LEFT)  ltPressed = true;
 
-      if (e.getKeyCode() == e.VK_RIGHT) rtPressed = true;
+      if (e.getKeyCode() == KeyEvent.VK_RIGHT) rtPressed = true;
 
-      if (e.getKeyCode() == e.VK_UP)    upPressed = true;
+      if (e.getKeyCode() == KeyEvent.VK_UP)    upPressed = true;
 
-      if (e.getKeyCode() == e.VK_DOWN)  dnPressed = true;
+      if (e.getKeyCode() == KeyEvent.VK_DOWN)  dnPressed = true;
    }
 
    public void keyReleased(KeyEvent e)
    {
-      if (e.getKeyCode() == e.VK_LEFT)  ltPressed = false;
+      if (e.getKeyCode() == KeyEvent.VK_LEFT)  ltPressed = false;
 
-      if (e.getKeyCode() == e.VK_RIGHT) rtPressed = false;
+      if (e.getKeyCode() == KeyEvent.VK_RIGHT) rtPressed = false;
 
-      if (e.getKeyCode() == e.VK_UP)    upPressed = false;
+      if (e.getKeyCode() == KeyEvent.VK_UP)    upPressed = false;
 
-      if (e.getKeyCode() == e.VK_DOWN)  dnPressed = false;
+      if (e.getKeyCode() == KeyEvent.VK_DOWN)  dnPressed = false;
    }
 
 

@@ -79,13 +79,13 @@ public class doubleTree {
 	 * x) { val = x; } }
 	 */
 
-	public static TreeNode doubleTree(TreeNode root) {
+	public static TreeNode doubleTreeSwap(TreeNode root) {
 		/* Write your code here */
 		if (root == null)
 			return null;
 
-		doubleTree(root.left);
-		doubleTree(root.right);
+		doubleTreeSwap(root.left);
+		doubleTreeSwap(root.right);
 
 		TreeNode dblNode = root.left;
 		root.left = new TreeNode(root.val);
@@ -100,7 +100,7 @@ public class doubleTree {
 
 		TreeNode root = readBinaryTree(in);
 
-		TreeNode head = doubleTree(root);
+		TreeNode head = doubleTreeSwap(root);
 
 		System.out.println(description(head));
 	}

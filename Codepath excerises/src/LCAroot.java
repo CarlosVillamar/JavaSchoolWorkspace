@@ -63,7 +63,6 @@ class LCAroot {
 		Node seven = new Node(7);
 		right.right = seven;
 
-		Node trial = null;
 		Node result = LCA(root, null, seven);
 		System.out.println(result.val);
 	}

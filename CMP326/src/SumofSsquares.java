@@ -12,6 +12,7 @@ public class SumofSsquares {
 		System.out.println("please enter an Integer");
 		Scanner keyboard = new Scanner(System.in);
 		userNum=keyboard.nextInt();
+		keyboard.close();
 	}
 	
 
@@ -22,7 +23,7 @@ public class SumofSsquares {
 			sum = sum +(i+i);
 		} 
 		System.out.println("The sum of squares up to "+n +""+sum);
-		return sum;
+;		return sum;
 	}
 
 }
