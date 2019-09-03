@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;CMP338/src/heaps/Tester (1).java&apos; to &apos;Tester.java&apos;" description="Rename resource &apos;Tester (1).java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/heaps/Tester (1).java" name="Tester.java" stamp="1480489793474" updateReferences="true"/>
-</session>
