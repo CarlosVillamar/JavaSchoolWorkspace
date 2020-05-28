@@ -1,6 +1,4 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.TextField;
 import java.net.*;
 import java.io.*;
 
